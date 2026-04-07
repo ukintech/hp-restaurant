@@ -1,0 +1,37 @@
+---
+interface GalleryItem {
+  src?: string;
+  alt: string;
+}
+
+interface Props {
+  heading: string;
+  items: GalleryItem[];
+}
+
+const { heading, items } = Astro.props;
+---
+
+<section class="py-20 bg-white">
+  <div class="max-w-6xl mx-auto px-4">
+    <h2 class="text-2xl md:text-3xl font-bold text-center mb-14">{heading}</h2>
+    <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+      {items.map((item) => (
+        <div class="aspect-square rounded-xl overflow-hidden shadow-sm">
+          {item.src ? (
+            <img
+              src={item.src}
+              alt={item.alt}
+              class="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+              loading="lazy"
+            />
+          ) : (
+            <div class="w-full h-full bg-gray-200 flex items-center justify-center text-gray-400 text-sm">
+              {item.alt}
+            </div>
+          )}
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

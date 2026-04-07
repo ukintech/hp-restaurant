@@ -1,0 +1,49 @@
+---
+interface MenuItem {
+  name: string;
+  price: string;
+  description?: string;
+}
+
+interface MenuCategory {
+  category: string;
+  items: MenuItem[];
+}
+
+interface Props {
+  heading: string;
+  categories: MenuCategory[];
+}
+
+const { heading, categories } = Astro.props;
+---
+
+<section class="py-20 bg-white">
+  <div class="max-w-6xl mx-auto px-4">
+    <h2 class="text-2xl md:text-3xl font-bold text-center mb-14">{heading}</h2>
+    <div class="grid md:grid-cols-2 gap-12">
+      {categories.map((cat) => (
+        <div>
+          <h3 class="text-xl font-bold mb-6 pb-2 border-b-2 border-primary-300">
+            {cat.category}
+          </h3>
+          <ul class="space-y-4">
+            {cat.items.map((item) => (
+              <li class="flex justify-between items-start gap-4">
+                <div>
+                  <span class="font-bold text-gray-800">{item.name}</span>
+                  {item.description && (
+                    <p class="text-sm text-gray-500 mt-1">{item.description}</p>
+                  )}
+                </div>
+                <span class="text-primary-700 font-bold whitespace-nowrap">
+                  {item.price}
+                </span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

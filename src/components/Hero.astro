@@ -1,0 +1,33 @@
+---
+interface Props {
+  title: string;
+  subtitle: string;
+  backgroundImage?: string;
+  cta: {
+    label: string;
+    href: string;
+  };
+}
+
+const { title, subtitle, backgroundImage, cta } = Astro.props;
+---
+
+<section class="relative text-white overflow-hidden">
+  <div class="absolute inset-0 bg-gradient-to-br from-primary-600 to-primary-800">
+    {backgroundImage && <img src={backgroundImage} alt="" class="w-full h-full object-cover opacity-40" />}
+  </div>
+  <div class="relative max-w-6xl mx-auto px-4 py-24 md:py-32 text-center">
+    <h1 class="text-3xl md:text-5xl font-bold leading-tight mb-6">
+      {title}
+    </h1>
+    <p class="text-lg md:text-xl text-primary-100 mb-10 max-w-2xl mx-auto">
+      {subtitle}
+    </p>
+    <a
+      href={cta.href}
+      class="inline-block bg-white text-primary-700 font-bold px-8 py-4 rounded-lg hover:bg-primary-50 transition-colors text-lg"
+    >
+      {cta.label}
+    </a>
+  </div>
+</section>

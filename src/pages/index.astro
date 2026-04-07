@@ -1,0 +1,53 @@
+---
+import Base from "../layouts/Base.astro";
+import Header from "../components/Header.astro";
+import Hero from "../components/Hero.astro";
+import Features from "../components/Features.astro";
+import Menu from "../components/Menu.astro";
+import Gallery from "../components/Gallery.astro";
+import About from "../components/About.astro";
+import Access from "../components/Access.astro";
+import CTA from "../components/CTA.astro";
+import Footer from "../components/Footer.astro";
+import { site } from "../data/site";
+---
+
+<Base title={site.name} description={site.description}>
+  <Header siteName={site.name} nav={site.nav} />
+  <main>
+    <Hero
+      title={site.hero.title}
+      subtitle={site.hero.subtitle}
+      backgroundImage={site.hero.backgroundImage}
+      cta={site.hero.cta}
+    />
+    <Features heading={site.features.heading} items={site.features.items} />
+    {site.menu && (
+      <Menu heading={site.menu.heading} categories={site.menu.categories} />
+    )}
+    {site.gallery && (
+      <Gallery heading={site.gallery.heading} items={site.gallery.items} />
+    )}
+    <About
+      heading={site.about.heading}
+      description={site.about.description}
+      stats={site.about.stats}
+    />
+    {site.access && (
+      <Access
+        heading={site.access.heading}
+        address={site.access.address}
+        tel={site.access.tel}
+        businessHours={site.access.businessHours}
+        closedDay={site.access.closedDay}
+        mapEmbedUrl={site.access.mapEmbedUrl}
+      />
+    )}
+    <CTA
+      heading={site.cta.heading}
+      description={site.cta.description}
+      button={site.cta.button}
+    />
+  </main>
+  <Footer copyright={site.footer.copyright} nav={site.nav} />
+</Base>

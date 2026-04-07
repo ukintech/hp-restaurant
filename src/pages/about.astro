@@ -1,0 +1,73 @@
+---
+import Base from "../layouts/Base.astro";
+import Header from "../components/Header.astro";
+import CTA from "../components/CTA.astro";
+import Footer from "../components/Footer.astro";
+import { site } from "../data/site";
+
+const { company } = site.about;
+const rows = [
+  { label: "会社名", value: company.name },
+  { label: "所在地", value: company.address },
+  { label: "設立", value: company.established },
+  { label: "代表者", value: company.ceo },
+  { label: "電話番号", value: company.tel },
+  { label: "メール", value: company.email },
+];
+---
+
+<Base title={`会社概要 | ${site.name}`} description={site.about.description}>
+  <Header siteName={site.name} nav={site.nav} />
+  <main>
+    <!-- ページヘッダー -->
+    <section class="bg-primary-700 text-white py-16">
+      <div class="max-w-6xl mx-auto px-4 text-center">
+        <h1 class="text-3xl md:text-4xl font-bold">{site.about.heading}</h1>
+      </div>
+    </section>
+
+    <!-- 会社紹介 -->
+    <section class="py-20">
+      <div class="max-w-4xl mx-auto px-4">
+        <p class="text-gray-600 text-lg leading-relaxed mb-12 text-center">
+          {site.about.description}
+        </p>
+
+        <!-- 実績 -->
+        <div class="grid grid-cols-3 gap-6 mb-16">
+          {site.about.stats.map((stat) => (
+            <div class="text-center">
+              <div class="text-3xl font-bold text-primary-600 mb-2">
+                {stat.value}
+              </div>
+              <div class="text-sm text-gray-500">{stat.label}</div>
+            </div>
+          ))}
+        </div>
+
+        <!-- 会社情報テーブル -->
+        <div class="bg-gray-50 rounded-xl p-8">
+          <table class="w-full">
+            <tbody>
+              {rows.map((row) => (
+                <tr class="border-b border-gray-200 last:border-0">
+                  <th class="text-left py-4 pr-8 text-gray-500 font-medium w-32">
+                    {row.label}
+                  </th>
+                  <td class="py-4 text-gray-800">{row.value}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <CTA
+      heading={site.cta.heading}
+      description={site.cta.description}
+      button={site.cta.button}
+    />
+  </main>
+  <Footer copyright={site.footer.copyright} nav={site.nav} />
+</Base>

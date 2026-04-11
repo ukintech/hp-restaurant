@@ -1,0 +1,26 @@
+name: タスク
+description: 改善・リファクタリング・その他の作業
+labels: ["task"]
+body:
+  - type: textarea
+    id: summary
+    attributes:
+      label: 概要
+      description: 作業内容
+      placeholder: 例：ギャラリー画像を実際の商品写真に差し替える
+    validations:
+      required: true
+  - type: textarea
+    id: tasks
+    attributes:
+      label: タスク
+      description: 具体的な作業項目（チェックリスト）
+      value: |
+        - [ ]
+        - [ ]
+        - [ ]
+  - type: textarea
+    id: notes
+    attributes:
+      label: 備考
+      description: 参考リンク・補足情報など

@@ -1,0 +1,32 @@
+name: 機能追加
+description: 新しい機能やコンポーネントの追加
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: summary
+    attributes:
+      label: 概要
+      description: 追加したい機能の概要
+      placeholder: 例：商品ページに「カートに入れる」ボタンを追加する
+    validations:
+      required: true
+  - type: textarea
+    id: motivation
+    attributes:
+      label: 背景・目的
+      description: なぜこの機能が必要か
+      placeholder: 例：EC機能を追加してデモサイトの完成度を上げるため
+  - type: textarea
+    id: tasks
+    attributes:
+      label: タスク
+      description: 具体的な作業項目（チェックリスト）
+      value: |
+        - [ ]
+        - [ ]
+        - [ ]
+  - type: textarea
+    id: notes
+    attributes:
+      label: 備考
+      description: 参考リンク・技術的な制約など
